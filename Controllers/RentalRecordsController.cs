@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -48,9 +47,8 @@ namespace TIYVideoStorePartDeux.Controllers
         // GET: RentalRecords/Create
         public IActionResult Create()
         {
-            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerName", "Customer Name");
-            ViewData["MovieName"] = new SelectList(_context.Movies, "MovieName", "Movie Name");
-            return View();
+            var movieForm = new MovieService(_context);
+            return View(movieForm.CreateRentalRecord());
         }
 
         // POST: RentalRecords/Create
@@ -58,17 +56,18 @@ namespace TIYVideoStorePartDeux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RentalID,MovieName,CustomerName,RentalDate,DueDate,ReturnDate")] RentalRecordsModel rentalRecordsModel)
+        public IActionResult CreateRecord(int movie, int customer, DateTime rentaldate, DateTime duedate)
         {
-            if (ModelState.IsValid)
+            var newRecord = new RentalRecordsModel
             {
-                _context.Add(rentalRecordsModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerName", "Customer Name", rentalRecordsModel.CustomersModel.CustomerName);
-            ViewData["MovieName"] = new SelectList(_context.Movies, "MovieName", "Movie Name", rentalRecordsModel.MoviesModel.MovieName);
-            return View(rentalRecordsModel);
+                MovieID = movie,
+                CustomerID = customer,
+                RentalDate = rentaldate,
+                DueDate = duedate
+            };
+            _context.RentalRecords.Add(newRecord);
+            _context.SaveChanges();
+            return Redirect("Index");
         }
 
         // GET: RentalRecords/Edit/5

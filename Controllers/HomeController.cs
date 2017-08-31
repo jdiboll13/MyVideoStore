@@ -47,7 +47,7 @@ namespace TIYVideoStorePartDeux.Controllers
             }
             rentalRecordModel.ReturnDate = DateTime.Now;
             await _context.SaveChangesAsync();
-            return RedirectToAction("Return", "Return");
+            return RedirectToAction("Return", "Home");
         }
 
         public IActionResult Error()

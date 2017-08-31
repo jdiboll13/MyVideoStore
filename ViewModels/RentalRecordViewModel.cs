@@ -3,7 +3,9 @@ using System;
 namespace TIYVideoStorePartDeux.Models
 {
     public class RentalRecordViewModel
-    {   
+    {
+        private RentalRecordsModel s;
+
         public int RentalID { get; set; }
         public  int MovieID { get; set; }
         public string MovieName { get; set; }
@@ -30,6 +32,11 @@ namespace TIYVideoStorePartDeux.Models
            this.CustomerID = record.CustomerID;
            this.CustomerName = record.CustomerName;
            this.CustomerPhone = record.CustomerPhone;
+        }
+
+        public RentalRecordViewModel(RentalRecordsModel s)
+        {
+            this.s = s;
         }
     }
 }

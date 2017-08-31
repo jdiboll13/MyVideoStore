@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentalRecordsModel>
+﻿@model IEnumerable<RentalRecordViewModel>
 
 @{
     ViewData["Title"] = "Overdue";
@@ -22,10 +22,10 @@
                 @Html.DisplayNameFor(model => model.ReturnDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomersModel.CustomerName)
+                @Html.DisplayNameFor(model => model.CustomerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MoviesModel.MovieName)
+                @Html.DisplayNameFor(model => model.MovieName)
             </th>
             <th></th>
         </tr>
@@ -46,10 +46,10 @@
                 @Html.DisplayFor(modelItem => item.ReturnDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomersModel.CustomerName)
+                @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MoviesModel.MovieName)
+                @Html.DisplayFor(modelItem => item.MovieName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RentalID">Edit</a> |

@@ -56,7 +56,7 @@ namespace TIYVideoStorePartDeux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MovieID,MovieName,MovieDescription,GenreName")] MoviesModel movieModel)
+        public async Task<IActionResult> Create([Bind("MovieID,MovieName,MovieDescription,GenreID")] MoviesModel movieModel)
         {
             if (ModelState.IsValid)
             {

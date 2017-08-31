@@ -6,17 +6,6 @@ namespace TIYVideoStorePartDeux.Models
 {
     public class RentalRecordsModel
     {
-        private RentalRecordsModel s;
-
-        public RentalRecordsModel(RentalRecordsModel s)
-        {
-            this.s = s;
-        }
-
-        public RentalRecordsModel()
-        {
-            
-        }
 
         [Key]
         public int RentalID { get; set; }

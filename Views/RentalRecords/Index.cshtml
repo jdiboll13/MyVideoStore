@@ -1,4 +1,4 @@
-@model IEnumerable<TIYVideoStorePartDeux.Models.RentalRecordsModel>
+@model IEnumerable<RentalRecordsModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,20 +12,20 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RentalDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DueDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReturnDate)
-                </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomersModel)
+                @Html.DisplayNameFor(model => model.RentalDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MoviesModel)
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomersModel.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoviesModel.MovieName)
             </th>
             <th></th>
         </tr>
@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.ReturnDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomersModel.CustomerID)
+                @Html.DisplayFor(modelItem => item.CustomersModel.CustomerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MoviesModel.MovieID)
+                @Html.DisplayFor(modelItem => item.MoviesModel.MovieName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RentalID">Edit</a> |
