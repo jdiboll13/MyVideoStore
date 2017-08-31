@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TIYVideoStorePartDeux.Models;
 
 namespace TIYVideoStorePartDeux.Controllers
@@ -26,7 +29,25 @@ namespace TIYVideoStorePartDeux.Controllers
 
         public IActionResult Return()
         {
-            return View();
+            var service = new MovieService(_context);
+            return View(service.GetCurrentlyRented());
+        }
+
+        public async Task<IActionResult> ReturnMovie(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var rentalRecordModel = await _context.RentalRecords.SingleOrDefaultAsync(m => m.RentalID == id);
+            if (rentalRecordModel == null)
+            {
+                return NotFound();
+            }
+            rentalRecordModel.ReturnDate = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Return", "Return");
         }
 
         public IActionResult Error()

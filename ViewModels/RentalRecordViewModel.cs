@@ -19,17 +19,17 @@ namespace TIYVideoStorePartDeux.Models
         {
         }
 
-        public RentalRecordViewModel(RentalRecordsModel record)
+        public RentalRecordViewModel(RentalRecordViewModel record)
         {
            this.RentalID = record.RentalID;
            this.MovieID = record.MovieID;
-           this.MovieName = record.MoviesModel.MovieName;
+           this.MovieName = record.MovieName;
            this.RentalDate = record.RentalDate;
            this.DueDate = record.DueDate;
            this.ReturnDate = record.ReturnDate;
            this.CustomerID = record.CustomerID;
-           this.CustomerName = record.CustomersModel.CustomerName;
-           this.CustomerPhone = record.CustomersModel.CustomerPhone;
+           this.CustomerName = record.CustomerName;
+           this.CustomerPhone = record.CustomerPhone;
         }
     }
 }

@@ -1,17 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@model IEnumerable<RentalRecordsModel>
+    
+@{
+    ViewData["Title"] = "Return A Movie";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>Index</h2>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MoviesModel.MovieName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReturnDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomersModel.CustomerName)
+                </th>
+                <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoviesModel.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomersModel.CustomerName)
+            </td>
+            <td>
+                <a asp-action="ReturnMovie" asp-route-id="@item.RentalID">Return</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

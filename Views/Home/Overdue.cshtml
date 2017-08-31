@@ -1,7 +1,62 @@
-﻿@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+﻿@model IEnumerable<RentalRecordsModel>
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewData["Title"] = "Overdue";
+}
+
+<h2>Overdue</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomersModel.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoviesModel.MovieName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.RentalID)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomersModel.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoviesModel.MovieName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RentalID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RentalID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RentalID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

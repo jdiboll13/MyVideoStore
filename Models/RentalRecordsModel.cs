@@ -13,6 +13,11 @@ namespace TIYVideoStorePartDeux.Models
             this.s = s;
         }
 
+        public RentalRecordsModel()
+        {
+            
+        }
+
         [Key]
         public int RentalID { get; set; }
 

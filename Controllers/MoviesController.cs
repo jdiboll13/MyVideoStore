@@ -47,7 +47,7 @@ namespace TIYVideoStorePartDeux.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["GenreName"] = new SelectList(_context.Genres, "GenreName", "Genre Name");
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID");
             return View();
         }
 
@@ -56,16 +56,16 @@ namespace TIYVideoStorePartDeux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MovieID,MovieName,MovieDescription,GenreID")] MoviesModel moviesModel)
+        public async Task<IActionResult> Create([Bind("MovieID,MovieName,MovieDescription,GenreName")] MoviesModel movieModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(moviesModel);
+                _context.Add(movieModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenreName"] = new SelectList(_context.Genres, "GenreName", "Genre Name", moviesModel.GenresModel.GenreName);
-            return View(moviesModel);
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "GenreID", movieModel.GenreID);
+            return View(movieModel);
         }
 
         // GET: Movies/Edit/5
