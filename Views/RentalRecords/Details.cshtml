@@ -1,0 +1,48 @@
+@model TIYVideoStorePartDeux.Models.RentalRecordsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RentalRecordsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomersModel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomersModel.CustomerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviesModel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MoviesModel.MovieID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RentalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
